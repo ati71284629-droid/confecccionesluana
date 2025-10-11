@@ -3,234 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confecciones Luana - Ropa Deportiva Personalizada</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <title>Confecciones Luana | Ropa Deportiva Premium Personalizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #1a237e;
+            --primary-dark: #000051;
+            --primary-light: #534bae;
+            --secondary: #ff4081;
+            --accent: #00b0ff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --light: #f7fafc;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #1a237e 0%, #311b92 100%);
+            --gradient-accent: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+            --shadow: 0 20px 40px rgba(0,0,0,0.1);
+            --shadow-lg: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #1e3c72;
-            --secondary: #2a5298;
-            --accent: #ff6b6b;
-            --light: #f8f9fa;
-            --dark: #333;
-            --text: #444;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Source Sans Pro', sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             color: var(--text);
-            background: var(--light);
+            background: var(--white);
             overflow-x: hidden;
         }
 
-        .texture-bg {
-            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f0f0f0"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e0e0e0" stroke-width="1"/></svg>');
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
         }
 
-        /* Header Hero */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
             position: relative;
-            overflow: hidden;
-            min-height: 80vh;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            color: var(--white);
             display: flex;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="1000,1000 0,1000 0,0"/></svg>');
             background-size: cover;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            animation: fadeInUp 1s ease;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
         }
 
-        .hero .tagline {
-            font-size: 1.6em;
-            margin-bottom: 30px;
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
             opacity: 0.9;
             font-weight: 300;
         }
 
-        .hero p {
-            font-size: 1.2em;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 15px 40px;
+        .btn {
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1em;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .cta-button:hover {
-            background: #ff5252;
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(255, 64, 129, 0.4);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255,107,107,0.5);
+            box-shadow: 0 15px 40px rgba(255, 64, 129, 0.6);
         }
 
-        /* Secciones */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .card-1 {
+            top: -50px;
+            left: 0;
+            animation-delay: 0s;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .card-2 {
+            bottom: -30px;
+            right: 0;
+            animation-delay: 2s;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .card-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 4s;
+            background: var(--white);
+            color: var(--text);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Sections */
         section {
             padding: 100px 0;
         }
 
-        h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8em;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
             color: var(--primary);
-            position: relative;
+            margin-bottom: 1rem;
         }
 
-        h2::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 5px;
-            background: var(--accent);
-            margin: 20px auto;
-            border-radius: 2px;
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Servicios Grid */
+        /* Services */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
         .service-card {
-            background: white;
-            padding: 50px 30px;
-            border-radius: 15px;
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            border-top: 5px solid var(--primary);
             position: relative;
             overflow: hidden;
         }
 
         .service-card::before {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--primary);
+            background: var(--gradient-accent);
         }
 
         .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
 
         .service-icon {
-            font-size: 4em;
-            margin-bottom: 25px;
-            color: var(--primary);
-            display: inline-block;
-            height: 100px;
-            width: 100px;
-            line-height: 100px;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
             border-radius: 50%;
-            background: rgba(30, 60, 114, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-            background: var(--primary);
-            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: var(--white);
         }
 
         .service-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--primary);
-            font-size: 1.5em;
         }
 
-        .service-card p {
-            color: #666;
-            font-size: 1.05em;
-        }
-
-        /* Galería de Trabajos */
-        .gallery-section {
-            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+        /* Gallery */
+        .gallery {
+            background: var(--light);
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
         .gallery-item {
             position: relative;
-            border-radius: 12px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            height: 300px;
-            transition: all 0.4s ease;
+            height: 400px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
         }
 
         .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
         }
 
         .gallery-img {
@@ -249,9 +376,9 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: white;
-            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: 2rem;
             transform: translateY(100%);
             transition: transform 0.3s ease;
         }
@@ -260,371 +387,329 @@
             transform: translateY(0);
         }
 
-        /* Contacto */
+        /* Contact */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px;
-            margin-top: 50px;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
 
         .contact-info {
-            background: white;
-            padding: 50px 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .contact-info::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            border-radius: 20px 20px 0 0;
-        }
-
-        .contact-item {
             display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 12px;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
         }
 
-        .contact-item:hover {
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transform: translateX(5px);
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .contact-icon {
-            font-size: 1.8em;
-            margin-right: 20px;
+        .contact-card h3 {
             color: var(--primary);
-            min-width: 50px;
-            text-align: center;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .whatsapp-btn {
             background: #25D366;
             color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
+            padding: 1rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            gap: 0.5rem;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-        }
-
-        .whatsapp-btn i {
-            margin-right: 10px;
-            font-size: 1.2em;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
         }
 
         .whatsapp-btn:hover {
-            background: #128C7E;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.5);
-        }
-
-        .benefits-list {
-            list-style: none;
-        }
-
-        .benefits-list li {
-            margin-bottom: 20px;
-            padding: 15px 20px 15px 50px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .benefits-list li:hover {
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .benefits-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2em;
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
-            color: white;
-            padding: 70px 0 20px;
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-section h3 {
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 25px;
-            color: white;
-            font-size: 1.4em;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-section h3::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
         }
 
         .social-links {
             display: flex;
-            gap: 20px;
-            margin: 30px 0;
+            gap: 1rem;
         }
 
         .social-link {
-            display: inline-flex;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border-radius: 50%;
+            color: var(--white);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1.3em;
         }
 
         .social-link:hover {
-            background: var(--accent);
-            transform: translateY(-5px);
+            background: var(--secondary);
+            transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9em;
-            opacity: 0.7;
-        }
-
-        /* Animaciones */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            color: rgba(255,255,255,0.7);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-            
-            section {
-                padding: 70px 0;
-            }
-            
-            h2 {
-                font-size: 2.2em;
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .service-card {
-                padding: 30px 20px;
+            .hero-text h1 {
+                font-size: 2.5rem;
             }
 
-            .contact-info {
-                padding: 30px 25px;
+            .cta-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
             }
-        }
 
-        @media (max-width: 480px) {
-            .hero {
-                padding: 80px 0;
-                min-height: 70vh;
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .hero h1 {
-                font-size: 2em;
+
+            .nav-links {
+                display: none;
             }
-            
-            .hero .tagline {
-                font-size: 1.3em;
-            }
-            
-            h2 {
-                font-size: 1.8em;
+
+            .floating-card {
+                position: relative;
+                margin: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>CONFECCIONES LUANA</h1>
-                <p class="tagline">Diseño y calidad en cada puntada</p>
-                <p>Especialistas en confección personalizada de ropa deportiva para equipos, academias y clientes individuales. Creamos diseños únicos que reflejan tu identidad.</p>
-                <a href="#contacto" class="cta-button">¡Solicita tu cotización!</a>
-            </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Luana<span>Confecciones</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <!-- Servicios -->
-    <section class="texture-bg">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">👕</div>
-                    <h3>Confección Personalizada</h3>
-                    <p>Ropa deportiva única diseñada específicamente para tu equipo o academia, con tallas y medidas exactas.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Confección Deportiva<br>de <span style="color: var(--secondary)">Alta Calidad</span></h1>
+                <p>Diseñamos y confeccionamos uniformes deportivos personalizados que reflejan la identidad y pasión de tu equipo.</p>
+                <div class="cta-buttons">
+                    <a href="#contacto" class="btn btn-primary">
+                        <i class="fas fa-tshirt"></i>
+                        Solicitar Cotización
+                    </a>
+                    <a href="#galeria" class="btn btn-secondary">
+                        <i class="fas fa-images"></i>
+                        Ver Trabajos
+                    </a>
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🏆</div>
-                    <h3>Uniformes Deportivos</h3>
-                    <p>Diseños exclusivos con identidad propia para competencias y entrenamientos, utilizando materiales de alta calidad.</p>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <i class="fas fa-trophy"></i>
+                    <h4>Competición</h4>
+                    <p>Uniformes para equipos</p>
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🎨</div>
-                    <h3>Bordados y Estampados</h3>
-                    <p>Personalización completa con técnicas de alta calidad y durabilidad para que tu marca se destaque.</p>
+                <div class="floating-card card-2">
+                    <i class="fas fa-users"></i>
+                    <h4>Academias</h4>
+                    <p>Ropa deportiva grupal</p>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-palette"></i>
+                    <h4>Personalizado</h4>
+                    <p>Diseños únicos</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Galería -->
-    <section class="gallery-section">
+    <!-- Services -->
+    <section id="servicios">
         <div class="container">
-            <h2>Nuestros Trabajos</h2>
+            <div class="section-header">
+                <h2>Nuestros Servicios</h2>
+                <p>Especializados en confección deportiva personalizada con los más altos estándares de calidad</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Confección Personalizada</h3>
+                    <p>Diseños exclusivos adaptados a las necesidades específicas de tu equipo o academia, con materiales de primera calidad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Uniformes Deportivos</h3>
+                    <p>Desarrollamos indumentaria profesional para competencias que combina estilo, comodidad y alto rendimiento.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Bordados & Estampados</h3>
+                    <p>Técnicas avanzadas de personalización que garantizan durabilidad y un acabado premium en cada prenda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Trabajos</h2>
+                <p>Descubre la calidad y atención al detalle en cada proyecto que realizamos</p>
+            </div>
             <div class="gallery-grid">
-                <div class="gallery-item fade-in">
-                    <img src="imagen1.jpg" alt="Uniforme deportivo personalizado" class="gallery-img">
+                <div class="gallery-item">
+                    <img src="imagen1.jpg" alt="Uniforme de fútbol personalizado" class="gallery-img">
                     <div class="gallery-overlay">
                         <h3>Uniforme de Fútbol</h3>
-                        <p>Diseño exclusivo para equipo local</p>
+                        <p>Liga Regional 2024</p>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
-                    <img src="imagen2.jpg" alt="Ropa deportiva para academia" class="gallery-img">
+                <div class="gallery-item">
+                    <img src="imagen2.jpg" alt="Ropa para academia de baile" class="gallery-img">
                     <div class="gallery-overlay">
-                        <h3>Indumentaria para Academia</h3>
-                        <p>Confección en serie para grupos</p>
+                        <h3>Academia de Danza</h3>
+                        <p>Confección grupal</p>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item">
                     <img src="imagen3.jpg" alt="Bordados personalizados" class="gallery-img">
                     <div class="gallery-overlay">
-                        <h3>Bordado de Alta Calidad</h3>
-                        <p>Detalles que marcan la diferencia</p>
+                        <h3>Bordado Premium</h3>
+                        <p>Alta definición</p>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
+                <div class="gallery-item">
                     <img src="imagen4.jpg" alt="Estampados deportivos" class="gallery-img">
                     <div class="gallery-overlay">
                         <h3>Estampado Digital</h3>
-                        <p>Técnicas modernas de personalización</p>
+                        <p>Técnica moderna</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contacto -->
-    <section id="contacto" class="texture-bg">
+    <!-- Contact -->
+    <section id="contacto">
         <div class="container">
-            <h2>Contáctanos</h2>
+            <div class="section-header">
+                <h2>Contáctanos</h2>
+                <p>¿Listo para llevar la indumentaria de tu equipo al siguiente nivel?</p>
+            </div>
             <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <h3 style="text-align: left; margin-bottom: 30px;">¡Hablemos de tu proyecto!</h3>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                        <div>
-                            <strong>WhatsApp</strong><br>
-                            <a href="https://wa.me/51TU_NUMERO" class="whatsapp-btn" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Escríbenos directamente
-                            </a>
-                        </div>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+                        <p>Comunícate directamente con nosotros para cotizaciones inmediatas</p>
+                        <a href="https://wa.me/51TU_NUMERO" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+                        </a>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <strong>Email</strong><br>
-                            contacto@confeccionesluana.com
-                        </div>
+                    <div class="contact-card">
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <p>contacto@confeccionesluana.com</p>
+                        <p>Respondemos en menos de 24 horas</p>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
-                            <strong>Taller</strong><br>
-                            Visítanos para atención personalizada
-                        </div>
+                    <div class="contact-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Taller</h3>
+                        <p>Visita nuestro taller para atención personalizada y asesoramiento</p>
+                        <p><strong>Horario:</strong> Lun-Vie 8:00 AM - 6:00 PM</p>
                     </div>
                 </div>
-
-                <div class="contact-info fade-in">
-                    <h3 style="text-align: left; margin-bottom: 30px;">¿Por qué elegirnos?</h3>
-                    <ul class="benefits-list">
-                        <li>Atención directa de los dueños con trato personalizado</li>
-                        <li>Materiales de primera calidad y durabilidad garantizada</li>
-                        <li>Cumplimiento estricto en tiempos de entrega</li>
-                        <li>Diseños exclusivos y únicos para tu equipo o academia</li>
-                        <li>Asesoramiento profesional en diseño y confección</li>
-                    </ul>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3><i class="fas fa-star"></i> ¿Por qué elegirnos?</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                <i class="fas fa-check" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+                                Atención personalizada directa con los dueños
+                            </li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                <i class="fas fa-check" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+                                Materiales premium importados y nacionales
+                            </li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                <i class="fas fa-check" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+                                Cumplimiento garantizado en tiempos de entrega
+                            </li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                <i class="fas fa-check" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+                                Diseños exclusivos y únicos para tu equipo
+                            </li>
+                            <li style="padding: 0.5rem 0;">
+                                <i class="fas fa-check" style="color: var(--secondary); margin-right: 0.5rem;"></i>
+                                Asesoramiento profesional en diseño textil
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>CONFECCIONES LUANA</h3>
-                    <p>Tu estilo, nuestra confección. Especialistas en ropa deportiva personalizada con años de experiencia en el sector textil.</p>
+                <div>
+                    <h3>Confecciones Luana</h3>
+                    <p>Especialistas en confección deportiva personalizada con años de experiencia y pasión por el diseño textil.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -632,63 +717,47 @@
                         <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Horario de Atención</h3>
-                    <p>Lun - Vie: 8:00 AM - 6:00 PM</p>
-                    <p>Sáb: 9:00 AM - 1:00 PM</p>
-                    <p>Dom: Cerrado</p>
+                <div>
+                    <h3>Contacto</h3>
+                    <p>📱 WhatsApp: +51 XXX XXX XXX</p>
+                    <p>📧 Email: contacto@confeccionesluana.com</p>
+                    <p>🏠 Taller: [Tu dirección aquí]</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Nuestros Servicios</h3>
-                    <p>Confección personalizada</p>
-                    <p>Uniformes deportivos</p>
-                    <p>Bordados y estampados</p>
-                    <p>Ropa deportiva casual</p>
+                <div>
+                    <h3>Horario</h3>
+                    <p>Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                    <p>Sábados: 9:00 AM - 1:00 PM</p>
+                    <p>Domingos: Cerrado</p>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>&copy; 2024 CONFECCIONES LUANA. Todos los derechos reservados.</p>
+                <p>&copy; 2024 Confecciones Luana. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Animación de aparición al hacer scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const fadeInOnScroll = function() {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('visible');
-                    }
-                });
-            };
-            
-            // Ejecutar al cargar y al hacer scroll
-            fadeInOnScroll();
-            window.addEventListener('scroll', fadeInOnScroll);
-            
-            // Smooth scroll para enlaces internos
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
     </script>
